@@ -5,131 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Futuristic Login Page - Secure Mode</title>
     <style>
-        /* မင်းရဲ့ မူလ Design Style များ */
+        /* မင်းရဲ့ မူလ Design Style များကို လုံးဝမပြောင်းလဲဘဲ ထိန်းသိမ်းထားပါတယ် */
         body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #0f172a; 
+            margin: 0; padding: 0; display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; background-color: #0f172a; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
         }
 
         .container {
-            position: relative;
-            width: 450px;
-            height: 450px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            position: relative; width: 450px; height: 450px;
+            display: flex; justify-content: center; align-items: center;
         }
 
         .circle-design {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: repeating-conic-gradient(
-                from 0deg,
-                #00f2ff 0deg 2deg,
-                transparent 2deg 10deg
-            );
+            position: absolute; width: 100%; height: 100%; border-radius: 50%;
+            background: repeating-conic-gradient(from 0deg, #00f2ff 0deg 2deg, transparent 2deg 10deg);
             mask: radial-gradient(farthest-side, transparent 90%, black 91%);
             -webkit-mask: radial-gradient(farthest-side, transparent 90%, black 91%);
-            animation: rotate 20s linear infinite;
-            opacity: 0.6;
+            animation: rotate 20s linear infinite; opacity: 0.6;
         }
 
-        @keyframes rotate {
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes rotate { 100% { transform: rotate(360deg); } }
 
-        .login-box {
-            position: relative;
-            width: 320px;
-            text-align: center;
-            color: #fff;
-            z-index: 10;
-        }
+        .login-box { position: relative; width: 320px; text-align: center; color: #fff; z-index: 10; }
+        .login-box h2 { font-size: 2.5rem; margin-bottom: 30px; color: #00f2ff; letter-spacing: 2px; text-shadow: 0 0 10px #00f2ff; }
 
-        .login-box h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #00f2ff;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px #00f2ff;
-        }
-
-        .input-group {
-            position: relative;
-            margin-bottom: 15px;
-            text-align: left;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 0.8rem;
-            color: #ccc;
-            padding-left: 15px;
-        }
-
+        .input-group { position: relative; margin-bottom: 25px; text-align: left; }
+        .input-group label { display: block; margin-bottom: 8px; font-size: 0.9rem; color: #ccc; padding-left: 15px; }
         .input-group input {
-            width: 100%;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid #00f2ff66;
-            border-radius: 25px;
-            color: white;
-            outline: none;
-            box-sizing: border-box;
-            transition: 0.3s;
+            width: 100%; padding: 12px 20px; background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #00f2ff66; border-radius: 25px; color: white; outline: none; box-sizing: border-box; transition: 0.3s;
         }
-
-        .input-group input:focus {
-            border-color: #00f2ff;
-            box-shadow: 0 0 10px #00f2ff;
-        }
+        .input-group input:focus { border-color: #00f2ff; box-shadow: 0 0 10px #00f2ff; background: rgba(255, 255, 255, 0.1); }
 
         .login-btn {
-            width: 100%;
-            padding: 12px;
-            background: #00f2ff;
-            border: none;
-            border-radius: 25px;
-            color: #000;
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-            box-shadow: 0 0 20px #00f2ff;
-            transition: 0.3s;
-            text-transform: uppercase;
-            margin-top: 10px;
+            width: 100%; padding: 12px; background: #00f2ff; border: none; border-radius: 25px;
+            color: #000; font-weight: bold; font-size: 1rem; cursor: pointer;
+            box-shadow: 0 0 20px #00f2ff; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;
         }
+        .login-btn:hover { box-shadow: 0 0 30px #00f2ff; transform: scale(1.02); }
 
-        .login-btn:hover {
-            box-shadow: 0 0 30px #00f2ff;
-            transform: scale(1.02);
-        }
-
-        .link-text {
-            display: inline-block;
-            margin-top: 15px;
-            color: #00f2ff;
-            text-decoration: none;
-            font-size: 0.85rem;
-            cursor: pointer;
-        }
-
-        #loading {
-            display: none;
-            color: #00f2ff;
-            margin-top: 10px;
-            font-size: 0.9rem;
-        }
+        .signup-link { display: inline-block; margin-top: 20px; color: #00f2ff; text-decoration: none; font-size: 0.9rem; cursor: pointer; }
+        #status-msg { margin-top: 15px; font-size: 0.85rem; color: #00f2ff; }
     </style>
 </head>
 <body>
@@ -138,7 +56,7 @@
         <div class="circle-design"></div>
 
         <div class="login-box">
-            <div id="loginSection">
+            <div id="loginForm">
                 <h2>Login</h2>
                 <div class="input-group">
                     <label>Username</label>
@@ -148,52 +66,40 @@
                     <label>Password</label>
                     <input type="password" id="lPass" placeholder="Password" required>
                 </div>
-                <button class="login-btn" onclick="handleLogin()">Sign In</button>
-                <div class="link-text" onclick="toggleForm('signup')">Create new account? Sign Up</div>
-                <br>
-                <div class="link-text" onclick="alert('Password reset link sent!')" style="font-size: 0.75rem; opacity: 0.7;">Forgot Password?</div>
+                <button class="login-btn" onclick="handleLogin()">Login</button>
+                <div class="signup-link" onclick="toggleForm('signup')">Need an account? Signup</div>
             </div>
 
-            <div id="signupSection" style="display:none;">
-                <h2>Sign Up</h2>
-                <div class="input-group">
-                    <input type="text" id="fname" placeholder="First Name" required>
-                </div>
-                <div class="input-group">
-                    <input type="text" id="mname" placeholder="Mid Name (Optional)">
-                </div>
-                <div class="input-group">
-                    <input type="text" id="lname" placeholder="Last Name" required>
-                </div>
-                <div class="input-group">
-                    <input type="text" id="sUser" placeholder="Choose Username" required>
-                </div>
-                <div class="input-group">
-                    <input type="password" id="sPass" placeholder="Set Password" required>
-                </div>
+            <div id="signupForm" style="display:none;">
+                <h2>Signup</h2>
+                <div class="input-group"><input type="text" id="fname" placeholder="First Name" required></div>
+                <div class="input-group"><input type="text" id="lname" placeholder="Last Name" required></div>
+                <div class="input-group"><input type="text" id="sUser" placeholder="Create Username" required></div>
+                <div class="input-group"><input type="password" id="sPass" placeholder="Create Password" required></div>
                 <button class="login-btn" onclick="handleSignup()">Register</button>
-                <div class="link-text" onclick="toggleForm('login')">Already have an account? Login</div>
+                <div class="signup-link" onclick="toggleForm('login')">Back to Login</div>
             </div>
 
-            <div id="loading">Processing...</div>
+            <div id="status-msg"></div>
         </div>
     </div>
 
     <script>
-        // မင်းရဲ့ Web App URL
+        // မင်းရဲ့ Google Web App URL
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyl4n53TBb3m_FWtP5DtfZCObeiGvHkdLzh0s-uV5Jf6ZxZz87XHfXuEVafL70mjiQi/exec";
 
-        function toggleForm(type) {
-            document.getElementById('loginSection').style.display = type === 'login' ? 'block' : 'none';
-            document.getElementById('signupSection').style.display = type === 'signup' ? 'block' : 'none';
+        function toggleForm(view) {
+            document.getElementById('loginForm').style.display = view === 'login' ? 'block' : 'none';
+            document.getElementById('signupForm').style.display = view === 'signup' ? 'block' : 'none';
+            document.getElementById('status-msg').innerText = "";
         }
 
         async function handleSignup() {
-            setLoading(true);
+            showStatus("Processing registration...");
             const data = {
                 action: "signup",
                 fname: document.getElementById('fname').value,
-                mname: document.getElementById('mname').value,
+                mname: "", // Optional mid name
                 lname: document.getElementById('lname').value,
                 user: document.getElementById('sUser').value,
                 pass: document.getElementById('sPass').value
@@ -202,15 +108,14 @@
             try {
                 const response = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(data) });
                 if (await response.text() === "Success") {
-                    alert("Account Created! Please Login.");
+                    alert("Account Created Successfully!");
                     toggleForm('login');
                 }
-            } catch (e) { alert("Error connecting to server!"); }
-            setLoading(false);
+            } catch (e) { showStatus("Connection error!"); }
         }
 
         async function handleLogin() {
-            setLoading(true);
+            showStatus("Verifying credentials...");
             const data = {
                 action: "login",
                 user: document.getElementById('lUser').value,
@@ -219,17 +124,17 @@
 
             try {
                 const response = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(data) });
-                if (await response.text() === "LoginSuccess") {
+                const result = await response.text();
+                if (result === "LoginSuccess") {
                     window.location.href = "https://www.facebook.com";
                 } else {
-                    alert("Invalid Username or Password!");
+                    showStatus("Invalid Username or Password!");
                 }
-            } catch (e) { alert("Login failed!"); }
-            setLoading(false);
+            } catch (e) { showStatus("Login failed!"); }
         }
 
-        function setLoading(status) {
-            document.getElementById('loading').style.display = status ? 'block' : 'none';
+        function showStatus(msg) {
+            document.getElementById('status-msg').innerText = msg;
         }
     </script>
 </body>
